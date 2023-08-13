@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Color</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        .box {
+            display: flex;
+            margin: auto;
+            flex-wrap: wrap;
+            width: 500px;
+        }
+
+        .inner-box {
+            border: 2px gray solid;
+            height: 90px;
+            width: 100px;
+            margin: auto;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1> Change background color </h1>
+    <div class="box" id="parent">
+        <div class="inner-box" id="box-1"></div>
+        <div class="inner-box" id="box-2"></div>
+        <div class="inner-box" id="box-3"></div>
+        <div class="inner-box" id="box-4"></div>
+        <div class="inner-box" id="box-5"></div>
+        <div class="inner-box" id="box-6"></div>
+        <div class="inner-box" id="box-7"></div>
+        <div class="inner-box" id="box-8"></div>
+        <div class="inner-box" id="box-9"></div>
+        <div class="inner-box" id="box-10"></div>
+        <div class="inner-box" id="box-11"></div>
+        <div class="inner-box" id="box-12"></div>
+        <div class="inner-box" id="box-13"></div>
+        <div class="inner-box" id="box-14"></div>
+        <div class="inner-box" id="box-15"></div>
+        <div class="inner-box" id="box-16"></div>
+    </div>
+</body>
+<script>
+    function generateColors() {
+        const elements = document.querySelectorAll('.inner-box');
+        elements.forEach((element) => {
+            let randomColorDegree = Math.floor(Math.random() * 360);
+            let randomColor = `hsl(${randomColorDegree},100%, 75%)`;
+            element.style.backgroundColor = randomColor;
+        });
+    }
+    function changeColor() {
+        const parent = document.getElementById('parent');
+        const body = document.querySelector('body');
+        parent.addEventListener('click', function (e) {
+            if (e.target != this)
+                body.style.backgroundColor = e.target.style.backgroundColor;
+        });
+    };
+    generateColors();
+    changeColor();
+
+</script>
+</html>

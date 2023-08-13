@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        .form-element {
+            margin: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculate BMI</h1>
+    <form id="bmi-form">
+        <div class="form-element">
+            <label for="height">Enter Height : </label>
+            <input type="number" name="height" id="height"> CM
+        </div>
+        <div class="form-element">
+            <label for="weight">Enter Weight : </label>
+            <input type="number" name="weight" id="weight"> KG
+        </div>
+        <div class="form-element">
+            <input type="submit" value="Calculate">
+        </div>
+    </form>
+    <h2 id="result">
+
+    </h2>
+</body>
+<script>
+    function calculateBMI() {
+        const form = document.getElementById("bmi-form");
+        const result = document.getElementById("result");
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const height = parseInt(document.querySelector('#height').value);
+            const weight = parseInt(document.querySelector('#weight').value);
+            if (!height || height < 1) {
+                result.innerText = "Please enter a valid height.";
+            } else if (!weight || weight < 1) {
+                result.innerText = "Please enter a valid weight.";
+            } else {
+                const bmi = (weight / ((height * height) / 10000)).toFixed(2);
+                result.innerText = bmi;
+            }
+
+        });
+    }
+    calculateBMI();
+</script>
+</html>

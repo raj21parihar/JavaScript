@@ -10,3 +10,19 @@ factorial accepts a single integer n and returns 1 if n <= 1 or factorial(n - 1)
  */
 
 //Solution
+/**
+ * @param {Function} fn
+ */
+function memoize(fn) {
+    let cache = {};
+    return function (...args) {
+        let key = JSON.stringify(args);
+        if (key in cache) {
+            return cache[key];
+        } else {
+            let ans = fn(...args);
+            cache[key] = ans;
+            return ans;
+        }
+    };
+}
